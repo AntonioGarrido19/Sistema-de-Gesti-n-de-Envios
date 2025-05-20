@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Presentacion.Models.Envios.EnvioListadoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Envios Activos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailEmpleado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tracking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Peso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailEmpleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tracking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+
+                @if ((int?)ViewBag.RolUsuario == 2)
+                {
+                    <div class="btn-group" role="group">
+                        @Html.ActionLink("Edit", "Edit", new { tracking = item.Tracking }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Agregar Comentario", "AgregarComentario", new { tracking = item.Tracking }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Delete", "Delete", new { tracking = item.Tracking }, new { @class = "btn btn-danger" })
+                    </div>
+                }
+
+
+            </td>
+        </tr>
+}
+    </tbody>
+    @ViewBag.Mensaje
+</table>

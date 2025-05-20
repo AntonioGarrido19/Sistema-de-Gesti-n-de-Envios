@@ -1,0 +1,49 @@
+﻿@model Presentacion.Models.Envios.EnvioUrgenteViewModel
+
+@{
+    ViewData["Title"] = "CreateUrgente";
+}
+
+<h1>Crear Envio Urgente</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateUrgente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmailCliente" class="control-label"></label>
+                <select name="EmailCliente" class="form-control">
+                    @foreach (var item in Model.Usuarios)
+                    {
+                        <option value="@item.Email">@item.Email</option>
+                    }
+                </select>
+                <span asp-validation-for="EmailCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Peso" class="control-label"></label>
+                <input asp-for="Peso" class="form-control" />
+                <span asp-validation-for="Peso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tracking" class="control-label"></label>
+                <input asp-for="Tracking" class="form-control" />
+                <span asp-validation-for="Tracking" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DireccionPostal" class="control-label"></label>
+                <input asp-for="DireccionPostal" class="form-control" />
+                <span asp-validation-for="DireccionPostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        @ViewBag.Mensaje
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

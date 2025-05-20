@@ -1,0 +1,70 @@
+﻿@model Presentacion.Models.Envios.FinalizarEnvioViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Finalizar Envío</h1>
+
+<h3>¿Estás seguro de que querés finalizar este envío?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tracking)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tracking)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmailCliente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmailCliente)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmailEmpleado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmailEmpleado)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+    </dl>
+
+    <form asp-action="Edit" method="post">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Tracking" />
+            <input type="hidden" asp-for="EmailCliente" />
+            <input type="hidden" asp-for="EmailEmpleado" />
+            <input type="hidden" asp-for="Fecha" />
+            <input type="hidden" asp-for="Estado" />
+
+            <input type="submit" value="Finalizar" class="btn btn-success" /> |
+            <a asp-action="Index">Volver al listado</a>
+        </form>
+    </form>
+    @ViewBag.Mensaje
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
